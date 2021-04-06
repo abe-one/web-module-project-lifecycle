@@ -15,8 +15,13 @@ class App extends Component {
   }
   componentDidMount() {
     axios
+      .get("https://api.github.com/users/abe-one/following")
+      .then((res) => console.log(res.data))
+      .catch((err) => console.log(err));
+    axios
       .get("https://api.github.com/users/abe-one")
-      .then((res) => this.setState({ userData: res.data }));
+      .then((res) => this.setState({ userData: res.data }))
+      .catch((err) => console.log(err));
   }
 
   render() {
@@ -24,7 +29,10 @@ class App extends Component {
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
+          <h1>My GitHub Profile</h1>
           <UserCard userData={this.state.userData} />
+          <h2>My Follows</h2>
+          <h2>My Followers</h2>
         </header>
       </div>
     );
