@@ -20,6 +20,9 @@ const UserCard = ({
         <h3>{name}</h3>
         <p>{login}</p>
         <p>Location: {location}</p>
+        <p>
+          Profile: <a href={html_url}>{html_url}</a>
+        </p>
         <p>Follows:{followers}</p>
         <p>Following: {following}</p>
         <p>{bio}</p>

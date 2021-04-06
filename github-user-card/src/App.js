@@ -5,6 +5,7 @@ import React, { Component } from "react";
 import axios from "axios";
 
 import UserCard from "./UserCard";
+import MiniCard from "./MiniCard";
 
 class App extends Component {
   constructor() {
@@ -32,6 +33,7 @@ class App extends Component {
           <h1>My GitHub Profile</h1>
           <UserCard userData={this.state.userData} />
           <h2>My Follows</h2>
+          <MiniCard miniUser={this.state.userData} />
           <h2>My Followers</h2>
         </header>
       </div>
