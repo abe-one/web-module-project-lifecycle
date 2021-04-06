@@ -1,4 +1,3 @@
-import logo from "./logo.svg";
 import "./App.css";
 
 import React, { Component } from "react";
@@ -11,32 +10,48 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      userData: {},
+      userObject: {},
+      followingArray: [],
+      followerArray: [],
     };
   }
   componentDidMount() {
-    setTimeout(() => {
-      axios
-        .get("https://api.github.com/users/abe-one/following")
-        .then((res) => console.log(res.data))
-        .catch((err) => console.log(err));
-      axios
-        .get("https://api.github.com/users/abe-one")
-        .then((res) => this.setState({ userData: res.data }))
-        .catch((err) => console.log(err));
-    }, 3000);
+    axios
+      .get("https://api.github.com/users/abe-one")
+      .then((res) => this.setState({ userObject: res.data }))
+      .catch((err) => console.log(err));
+
+    axios
+      .get("https://api.github.com/users/abe-one/following")
+      .then((res) => this.setState({ followingArray: res.data }))
+      .catch((err) => console.log(err));
+
+    axios
+      .get("https://api.github.com/users/abe-one/followers")
+      .then((res) => this.setState({ followerArray: res.data }))
+      .catch((err) => console.log(err));
   }
 
-  // ADD LOADING FUNCTIONALITY
   render() {
     return (
       <div className="App">
         <header className="App-header">
           <h1>My GitHub Profile</h1>
-          <UserCard userData={this.state.userData} />
-          <h2>My Follows</h2>
-          <MiniCard miniUser={this.state.userData} />
+          <UserCard userObject={this.state.userObject} />
+
           <h2>My Followers</h2>
+          <div className="arrayed-div">
+            {this.state.followerArray.map((follower) => (
+              <MiniCard miniUser={follower} />
+            ))}
+          </div>
+
+          <h2>My Follows</h2>
+          <div className="arrayed-div">
+            {this.state.followingArray.map((follow) => (
+              <MiniCard miniUser={follow} />
+            ))}
+          </div>
         </header>
       </div>
     );

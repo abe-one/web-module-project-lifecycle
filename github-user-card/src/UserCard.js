@@ -2,7 +2,7 @@ import React from "react";
 import logo from "./logo.svg";
 
 const UserCard = ({
-  userData: {
+  userObject: {
     avatar_url,
     login,
     name,
@@ -20,12 +20,11 @@ const UserCard = ({
         <img src={logo} width="150px" className="App-logo" alt="logo" />
       </>
     );
-
   // Loading message
 
   return (
-    <div className="user-card">
-      <img width="250" src={avatar_url} alt={`${login}'s avatar`} />
+    <div className="card user-card">
+      <img width="300" src={avatar_url} alt={`${login}'s avatar`} />
       <div>
         <h3>{name}</h3>
         <p>{login}</p>

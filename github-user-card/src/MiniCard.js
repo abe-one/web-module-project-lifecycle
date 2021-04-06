@@ -12,16 +12,14 @@ const MiniCard = ({ miniUser: { avatar_url, login, name, html_url } }) => {
   //Loading message
 
   return (
-    <div className="mini-card">
+    <div className="card mini-card">
       <a href={html_url}>
-        <img width="50px" src={avatar_url} alt={`${login}'s avatar`} />
+        <img width="200px" src={avatar_url} alt={`${login}'s avatar`} />
       </a>
       <div>
-        <h5>{name}</h5>
+        <h6>{name}</h6>
         <p>{login}</p>
-        <p>
-          Profile: <a href={html_url}>{html_url}</a>
-        </p>
+        <a href={html_url}>{html_url}</a>
       </div>
     </div>
   );
