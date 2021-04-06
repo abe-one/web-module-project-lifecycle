@@ -1,4 +1,5 @@
 import React from "react";
+import logo from "./logo.svg";
 
 const UserCard = ({
   userData: {
@@ -12,10 +13,19 @@ const UserCard = ({
     following,
   },
 }) => {
-  // console.log(userData);
+  if (!avatar_url)
+    return (
+      <>
+        <h2>LOADING</h2>
+        <img src={logo} width="150px" className="App-logo" alt="logo" />
+      </>
+    );
+
+  // Loading message
+
   return (
     <div className="user-card">
-      <img width="200px" src={avatar_url} alt={`${login}'s avatar`} />
+      <img width="250" src={avatar_url} alt={`${login}'s avatar`} />
       <div>
         <h3>{name}</h3>
         <p>{login}</p>
